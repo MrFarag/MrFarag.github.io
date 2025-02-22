@@ -1,71 +1,51 @@
-.body {
+body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-#hero {
-    background-color: #e2e2e2;
-    padding: 2rem;
-    text-align: center;
-}
-
-#hero h2 {
-    margin-top: 0;
-}
-
-main {
-    padding: 1rem;
+.container {
     background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
+h1 {
     text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+.question p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+button {
     width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* تحسين التصميم للأجهزة الصغيرة */
-@media (max-width: 600px) {
-    nav ul li {
-        display: block;
-        margin: 0;
-    }
-
-    #hero {
-        padding: 1rem;
-    }
-
-    footer {
-        position: static;
-    }
+button:hover {
+    background-color: #218838;
 }
-الجزء الرابع: إضافة صور وعناصر وسائط متعددة

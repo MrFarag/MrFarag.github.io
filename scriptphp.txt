@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي الأول</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>مرحبًا بكم في موقعي</h1>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">الخدمات</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h2>بناء مواقع ويب مذهلة</h2>
+            <p>اكتشف كيف يمكنك بناء موقع ويب رائع باستخدام HTML و CSS.</p>
+        </section>
+        <section id="about">
+            <h2>من نحن</h2>
+            <p>نحن فريق من المطورين المتخصصين في تطوير مواقع ويب عالية الجودة.</p>
+        </section>
+        <section id="services">
+            <h2>الخدمات</h2>
+            <ul>
+                <li>تطوير ويب مخصص</li>
+                <li>تصميم متجاوب</li>
+                <li>تحسين محركات البحث</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>حقوق النشر &copy; 2024 موقعي. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>
