@@ -1,0 +1,8 @@
+html, body {
+margin: 5px;
+background-image: linear-gradient(to bottom right, #95d9f9, #ae4bc3);
+}
+h1 {
+color: #1b95cd;
+font-family: tahoma, sans-serif;
+}
