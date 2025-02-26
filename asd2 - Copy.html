@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرسم في الوقت الفعلي</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background: #f0f0f0;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>الرسم في الوقت الفعلي</h1>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // الاتصال بالخادم
+        const socket = io();
+
+        let isDrawing = false;
+
+        // بدء الرسم
+        function startDrawing(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            const pos = getPosition(e);
+            ctx.moveTo(pos.x, pos.y);
+            socket.emit('draw', { type: 'start', x: pos.x, y: pos.y });
+        }
+
+        // الرسم أثناء الحركة
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getPosition(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            socket.emit('draw', { type: 'draw', x: pos.x, y: pos.y });
+        }
+
+        // إيقاف الرسم
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.closePath();
+            socket.emit('draw', { type: 'stop' });
+        }
+
+        // الحصول على إحداثيات الفأرة أو اللمس
+        function getPosition(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        // أحداث الفأرة
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // أحداث اللمس
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchcancel', stopDrawing);
+
+        // استقبال بيانات الرسم من الخادم
+        socket.on('draw', (data) => {
+            if (data.type === 'start') {
+                ctx.beginPath();
+                ctx.moveTo(data.x, data.y);
+            } else if (data.type === 'draw') {
+                ctx.lineTo(data.x, data.y);
+                ctx.stroke();
+            } else if (data.type === 'stop') {
+                ctx.closePath();
+            }
+        });
+    </script>
+</body>
+</html>
